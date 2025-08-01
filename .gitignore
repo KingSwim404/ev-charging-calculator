@@ -1,0 +1,21 @@
+# 微信小程序特有文件
+node_modules/
+miniprogram_npm/
+.DS_Store
+.idea
+.vscode
+
+# 临时文件
+*.log
+*.swp
+*.tmp
+
+# 编译输出
+dist/
+
+# 本地配置
+*.local.js
+*.local.json
+
+# 其他
+.env

@@ -1,0 +1,112 @@
+/**app.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+}
+
+/* 通用样式 */
+.page {
+  padding: 20rpx;
+  background-color: #f8f8f8;
+  min-height: 100vh;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 10rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 20rpx;
+}
+
+.subtitle {
+  font-size: 28rpx;
+  color: #666666;
+  margin-bottom: 15rpx;
+}
+
+.input-group {
+  margin-bottom: 30rpx;
+}
+
+.input-label {
+  font-size: 28rpx;
+  color: #333333;
+  margin-bottom: 10rpx;
+}
+
+.input-field {
+  border: 1rpx solid #e0e0e0;
+  border-radius: 8rpx;
+  padding: 20rpx;
+  font-size: 28rpx;
+  background-color: #ffffff;
+}
+
+.btn-primary {
+  background-color: #1aad19;
+  color: #ffffff;
+  border-radius: 8rpx;
+  padding: 20rpx;
+  font-size: 32rpx;
+  text-align: center;
+  margin: 20rpx 0;
+}
+
+.btn-secondary {
+  background-color: #ffffff;
+  color: #1aad19;
+  border: 1rpx solid #1aad19;
+  border-radius: 8rpx;
+  padding: 20rpx;
+  font-size: 28rpx;
+  text-align: center;
+  margin: 10rpx 0;
+}
+
+.result-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.result-label {
+  font-size: 28rpx;
+  color: #666666;
+}
+
+.result-value {
+  font-size: 32rpx;
+  color: #333333;
+  font-weight: bold;
+}
+
+.highlight {
+  color: #1aad19;
+}
+
+.error {
+  color: #ff4444;
+}
+
+.success {
+  color: #1aad19;
+}
+
+.warning {
+  color: #ff9900;
+}

@@ -1,0 +1,132 @@
+<view class="container">
+
+  <!-- 充电参数输入区域 -->
+  <view class="section input-section">
+    <view class="section-title">📱 充电参数输入</view>
+    <view class="input-group">
+      <view class="input-item {{batteryCapacityError ? 'error' : ''}}">
+        <view class="input-label-row">
+          <text class="input-label">电池容量(kWh)</text>
+        </view>
+        <view class="input-container">
+          <input type="digit" value="{{batteryCapacity}}" bindinput="onBatteryCapacityInput" class="input-field" placeholder=">0" />
+          <text class="input-icon">⚡</text>
+        </view>
+        <text wx:if="{{batteryCapacityError}}" class="error-text">{{batteryCapacityError}}</text>
+      </view>
+      
+      <view class="input-item {{currentBatteryError ? 'error' : ''}}">
+        <view class="input-label-row">
+          <text class="input-label">当前电量(%)</text>
+        </view>
+        <view class="input-container">
+          <input type="digit" value="{{currentBattery}}" bindinput="onCurrentBatteryInput" class="input-field" placeholder="0-100" />
+          <text class="input-icon">🔋</text>
+        </view>
+        <text wx:if="{{currentBatteryError}}" class="error-text">{{currentBatteryError}}</text>
+      </view>
+      
+      <view class="input-item {{electricityPriceError ? 'error' : ''}}">
+        <view class="input-label-row">
+          <text class="input-label">电价(元/度)</text>
+          <view class="switch-container invisible">
+            <switch scale="0.7" style="transform: scale(0.7); visibility: hidden;" />
+            <text class="switch-label" style="visibility: hidden;">充满</text>
+          </view>
+        </view>
+        <view class="input-container">
+          <input type="digit" value="{{electricityPrice}}" bindinput="onElectricityPriceInput" class="input-field" placeholder="如: 1.0" />
+          <text class="input-icon">💰</text>
+        </view>
+        <text wx:if="{{electricityPriceError}}" class="error-text">{{electricityPriceError}}</text>
+      </view>
+      
+      <view class="input-item {{chargingAmountError ? 'error' : ''}}">
+        <view class="input-label-row">
+          <text class="input-label">充电金额(元)</text>
+          <view class="switch-container">
+            <switch checked="{{isFullCharge}}" bindchange="onFullChargeChange" scale="0.7" color="#1aad19" style="transform: scale(0.7);" />
+            <text class="switch-label">充满</text>
+          </view>
+        </view>
+        <view class="input-container">
+          <input type="digit" value="{{chargingAmount}}" bindinput="onChargingAmountInput" class="input-field" placeholder="如: 50" disabled="{{isFullCharge}}" />
+          <text class="input-icon">💳</text>
+        </view>
+        <text wx:if="{{chargingAmountError}}" class="error-text">{{chargingAmountError}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 预估结果显示区域 -->
+  <view class="section result-section">
+    <view class="section-title">📊 预估结果</view>
+    <view class="result-group">
+      <view class="result-item">
+      <view class="result-value-column">
+        <text class="result-label">充电后电量:</text>
+          <text class="result-value">{{currentBattery || '--'}}% → {{estimatedFinalBattery || '--'}}%</text>
+          <text class="data-source">(预估值)</text>
+        </view>
+      </view>
+      
+      <view class="result-item">
+        <view class="result-value-column">
+          <text class="result-label">充电损耗率:</text>
+          <text class="result-value">{{formattedChargingLossRate || '--'}}%</text>
+          <text class="data-source">{{chargingLossRateSource}} - 常规损耗约12%</text>
+        </view>
+      </view>
+      
+      <view class="result-item">
+        <text class="result-label">可充电量:</text>
+        <text class="result-value">{{purchasedElectricity || '--'}} 度</text>
+      </view>
+      
+      <view class="result-item">
+        <text class="result-label">预估充入:</text>
+        <text class="result-value">{{estimatedBatteryIncrease || '--'}} 度</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 实际数据录入区域 -->
+  <view class="section actual-section">
+    <view class="section-title">
+      ✅ 实际数据录入
+    </view>
+    
+    <view class="actual-group">
+      <view class="input-group">
+        <view class="input-item {{actualChargingFeeError ? 'error' : ''}}" style="width: 48%;">
+          <view class="input-label-row">
+            <text class="input-label">充电费用(元)</text>
+            <view class="switch-container invisible">
+              <switch scale="0.7" style="transform: scale(0.7); visibility: hidden;" />
+              <text class="switch-label" style="visibility: hidden;">隐藏</text>
+            </view>
+          </view>
+          <input type="digit" value="{{actualChargingFee}}" bindinput="onActualChargingFeeInput" class="input-field" placeholder="交给充电桩的金额" />
+          <text wx:if="{{actualChargingFeeError}}" class="error-text">{{actualChargingFeeError}}</text>
+        </view>
+        
+        <view class="input-item {{actualFinalBatteryError ? 'error' : ''}}" style="width: 48%;">
+          <view class="input-label-row">
+            <text class="input-label">达到电量(%)</text>
+            <view class="switch-container">
+              <switch checked="{{isFullBattery}}" bindchange="onFullBatteryChange" scale="0.7" color="#1aad19" style="transform: scale(0.7);" />
+              <text class="switch-label">满电</text>
+            </view>
+          </view>
+          <input type="digit" value="{{actualFinalBattery}}" bindinput="onActualFinalBatteryInput" class="input-field" placeholder="车显电量" disabled="{{isFullBattery}}" />
+          <text wx:if="{{actualFinalBatteryError}}" class="error-text">{{actualFinalBatteryError}}</text>
+        </view>
+      </view>
+      
+      <button class="save-button" bindtap="saveActualData" disabled="{{!canSaveActualData}}">保存实际数据</button>
+    </view>
+  </view>
+
+  <!-- 历史数据已保存但不显示 -->
+  <!-- 历史数据仅用于计算充电损耗率 -->
+</view>

@@ -1,0 +1,228 @@
+/* 全局容器 */
+.container {
+  padding: 20rpx;
+  background-color: #f8f8f8;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* 标题栏已移除 */
+
+/* 通用区块样式 */
+.section {
+  background-color: #ffffff;
+  border-radius: 12rpx;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 20rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 输入区域样式 */
+.input-group {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20rpx;
+  justify-content: space-between;
+}
+
+.input-item {
+  position: relative;
+  padding-bottom: 10rpx;
+  width: 48%;
+}
+
+.input-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10rpx;
+}
+
+.input-label {
+  font-size: 28rpx;
+  color: #666666;
+}
+
+.switch-container {
+  display: flex;
+  align-items: center;
+  height: 28rpx; /* 与文本高度一致 */
+}
+
+.switch-label {
+  font-size: 24rpx;
+  color: #666666;
+  margin-left: 5rpx;
+}
+
+.input-field {
+  height: 80rpx;
+  border: 1rpx solid #dddddd;
+  border-radius: 8rpx;
+  padding: 10rpx 60rpx 10rpx 10rpx;
+  font-size: 28rpx;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.input-field:focus {
+  border-color: #1aad19;
+  box-shadow: 0 0 8rpx rgba(26, 173, 25, 0.2);
+  transform: scale(1.01);
+}
+
+.input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.input-field {
+  height: 80rpx;
+  border: 1rpx solid #dddddd;
+  border-radius: 8rpx;
+  padding: 10rpx 60rpx 10rpx 10rpx;
+  font-size: 28rpx;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.input-icon {
+  position: absolute;
+  right: 20rpx;
+  font-size: 36rpx;
+  line-height: 1;
+  z-index: 1;
+}
+
+.error .input-field {
+  border-color: #ff4444;
+}
+
+.error-text {
+  color: #ff4444;
+  font-size: 24rpx;
+  margin-top: 6rpx;
+}
+
+/* 结果区域样式 */
+.result-group {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20rpx;
+  justify-content: space-between;
+}
+
+.result-item {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 48%;
+}
+
+.result-label {
+  font-size: 28rpx;
+  color: #666666;
+  width: 180rpx;
+}
+
+.result-value {
+  font-size: 32rpx;
+  color: #333333;
+  font-weight: bold;
+}
+
+.result-value-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.warning {
+  color: #ff9900;
+}
+
+.data-source {
+  font-size: 24rpx;
+  color: #999999;
+  margin-top: 5rpx;
+}
+
+/* 实际数据录入区域样式 */
+.toggle-icon {
+  font-size: 24rpx;
+  color: #999999;
+}
+
+.actual-group {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.save-button {
+  margin-top: 20rpx;
+  background-color: #1aad19;
+  color: #ffffff;
+  font-size: 30rpx;
+  border-radius: 8rpx;
+}
+
+.save-button[disabled] {
+  background-color: #cccccc;
+  color: #999999;
+}
+
+/* 历史记录对比区域样式 */
+.history-header {
+  font-size: 28rpx;
+  color: #666666;
+  margin-bottom: 16rpx;
+}
+
+.comparison-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  margin-bottom: 12rpx;
+}
+
+.comparison-item {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 10rpx;
+}
+
+.comparison-label {
+  font-size: 26rpx;
+  color: #666666;
+  width: 200rpx;
+}
+
+.comparison-value {
+  font-size: 26rpx;
+  color: #333333;
+}
